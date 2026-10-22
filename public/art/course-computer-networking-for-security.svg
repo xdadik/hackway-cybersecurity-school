@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Computer Networking for Security artwork">
+  
+  <defs>
+    <linearGradient id="bg-net" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C1320"/>
+      <stop offset="0.55" stop-color="#101827"/>
+      <stop offset="1" stop-color="#080D16"/>
+    </linearGradient>
+    <radialGradient id="glow-net" cx="0.74" cy="0.18" r="0.7">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#38BDF8" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid-net" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#22304A" stroke-opacity="0.32" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="stroke-net" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6595FF" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg-net)"/>
+  <rect width="1280" height="720" fill="url(#grid-net)"/>
+  <rect width="1280" height="720" fill="url(#glow-net)"/>
+  
+  <g stroke-linecap="round"><path d="M820 180L760 300" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M760 300L700 430" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M820 180L980 250" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M980 250L1140 260" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M980 250L900 360" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M900 360L1060 400" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M1060 400L1010 520" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M900 360L880 520" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M760 300L900 360" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M1010 520L880 520" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/>
+  <path d="M700 430L880 520" stroke="#38BDF8" stroke-opacity="0.32" stroke-width="1.4"/></g>
+  <circle cx="820" cy="180" r="9" fill="#080D16" stroke="#38BDF8" stroke-opacity="0.95" stroke-width="1.8"/>
+  <circle cx="980" cy="250" r="6" fill="#080D16" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.8"/>
+  <circle cx="900" cy="360" r="6" fill="#080D16" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.8"/>
+  <circle cx="1060" cy="400" r="9" fill="#080D16" stroke="#38BDF8" stroke-opacity="0.95" stroke-width="1.8"/>
+  <circle cx="760" cy="300" r="6" fill="#080D16" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.8"/>
+  <circle cx="700" cy="430" r="6" fill="#080D16" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.8"/>
+  <circle cx="1010" cy="520" r="9" fill="#080D16" stroke="#38BDF8" stroke-opacity="0.95" stroke-width="1.8"/>
+  <circle cx="880" cy="520" r="6" fill="#080D16" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.8"/>
+  <circle cx="1140" cy="260" r="6" fill="#080D16" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.8"/>
+  <g transform="translate(300 250)" opacity="0.92">
+    <rect x="0" y="0" width="380" height="230" rx="14" fill="#080D16" fill-opacity="0.5" stroke="#2C3C55" stroke-width="1.2"/>
+    <rect x="0" y="0" width="380" height="42" rx="14" fill="#0C1320" fill-opacity="0.8"/>
+    <circle cx="26" cy="21" r="5" fill="#2C3C55"/>
+    <circle cx="44" cy="21" r="5" fill="#2C3C55"/>
+    <rect x="72" y="12" width="210" height="18" rx="9" fill="#080D16" stroke="#2C3C55" stroke-width="1"/>
+    <text x="86" y="25" fill="#6E7C92" font-size="12" font-family="ui-monospace, monospace">192.168.10.24/24</text>
+    <rect x="26" y="66" width="150" height="10" rx="5" fill="#2C3C55" fill-opacity="0.7"/>
+    <rect x="26" y="86" width="240" height="10" rx="5" fill="#2C3C55" fill-opacity="0.45"/>
+    <rect x="26" y="106" width="196" height="10" rx="5" fill="#38BDF8" fill-opacity="0.45"/>
+    <rect x="26" y="134" width="120" height="62" rx="8" fill="#0C1320" stroke="#2C3C55" stroke-width="1"/>
+    <path d="M26 186l30-30 26 22 24-38" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-opacity="0.8"/>
+  </g>
+  <path d="M150 250h90" stroke="#38BDF8" stroke-opacity="0.55" stroke-width="1.4" stroke-dasharray="5 6"/>
+  <text x="150" y="234" fill="#6E7C92" font-size="13" font-family="ui-monospace, monospace" letter-spacing="1.6">ENCRYPTED</text>
+  <g font-family="Inter, 'Segoe UI', sans-serif">
+    <g transform="translate(64 560)">
+      <path d="M0 0h22v22H0z" fill="none" stroke="#38BDF8" stroke-opacity="0.55" stroke-width="1.5"/>
+      <path d="M6 11l4 4 7-8" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="36" y="16" fill="#A6B2C3" font-size="17" letter-spacing="2.4" font-weight="600">HACKWAY</text>
+    </g>
+    <text x="1216" y="576" text-anchor="end" fill="#6E7C92" font-size="14" letter-spacing="3" font-family="ui-monospace, 'Cascadia Code', monospace">NETWORKING</text>
+  </g>
+</svg>

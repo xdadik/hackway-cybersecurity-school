@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackway akademiyasi | Onlayn kiberxavfsizlik kurslari</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Tailwind Config for Theme Colors -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            acid: '#ccff00',
+            acidHover: '#b3e600',
+            darkBg: '#0a0a0a',
+            paperBg: '#121212',
+            grittyGray: '#1e1e1e',
+            typeWhite: '#f5f5f7'
+          },
+          fontFamily: {
+            sans: ['Impact', 'Arial Black', 'Trebuchet MS', 'sans-serif'],
+            mono: ['Courier New', 'Courier', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts for Mono Code Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Base Styling */
+    body {
+      background-color: #0a0a0a;
+      color: #f5f5f7;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .font-heavy {
+      font-family: 'Impact', 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .font-code {
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Noise Texture Overlay for Urban Street-Poster Vibe */
+    .bg-noise {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Ripped Paper Edge Clips & Cuts */
+    .tear-mask {
+      clip-path: polygon(0 0, 100% 0, 100% 88%, 85% 95%, 70% 89%, 50% 98%, 30% 91%, 12% 97%, 0 88%);
+    }
+
+    .tear-mask-top {
+      clip-path: polygon(0 12%, 15% 4%, 32% 11%, 50% 2%, 68% 10%, 85% 3%, 100% 12%, 100% 100%, 0 100%);
+    }
+
+    .tear-stripe {
+      clip-path: polygon(0 35%, 100% 10%, 100% 65%, 0 90%);
+    }
+
+    /* Door / Slit Overlay animation */
+    .curtain-left {
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
+    }
+    .curtain-right {
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
+    }
+
+    .ripped-open .curtain-left {
+      transform: translateX(-105%) skewY(-6deg);
+      opacity: 0;
+    }
+
+    .ripped-open .curtain-right {
+      transform: translateX(105%) skewY(6deg);
+      opacity: 0;
+    }
+
+    /* Glitch Animation Effects */
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+    .glitch-hover:hover {
+      animation: glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ccff00;
+      border-radius: 2px;
+    }
+
+    /* Scroll reveals */
+    @media (prefers-reduced-motion: no-preference) {
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.7,.2,1);
+      }
+      .scroll-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .course-card:nth-child(2) { transition-delay: 80ms; }
+      .course-card:nth-child(3) { transition-delay: 160ms; }
+      .course-card:nth-child(4) { transition-delay: 240ms; }
+      .course-card:nth-child(5) { transition-delay: 320ms; }
+      .course-card:nth-child(6) { transition-delay: 400ms; }
+      html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+    }
+
+    /* Glow effect */
+    .glow-acid {
+      box-shadow: 0 0 25px rgba(204, 255, 0, 0.35);
+    }
+    .text-glow {
+      text-shadow: 0 0 12px rgba(204, 255, 0, 0.6);
+    }
+
+    #main-content .text-acid { color: #a8bfcc; }
+    #main-content .bg-acid { background-color: #a8bfcc; }
+    #main-content .border-acid { border-color: #a8bfcc; }
+    #main-content .hover\:text-acid:hover,
+    #main-content .group:hover .group-hover\:text-acid { color: #c5d7df; }
+    #main-content .hover\:bg-acid:hover { background-color: #c5d7df; }
+    #main-content .hover\:border-acid:hover,
+    #main-content .group:hover .group-hover\:border-acid { border-color: #a8bfcc; }
+    #main-content .focus\:border-acid:focus { border-color: #a8bfcc; }
+    #main-content [class~="bg-acid/10"] { background-color: rgba(168, 191, 204, 0.06); }
+    #main-content [class~="border-acid/40"] { border-color: rgba(168, 191, 204, 0.28); }
+
+    .tool-link { transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease; }
+    .tool-link:hover { color: #fff; border-color: #a8bfcc; background-color: rgba(168, 191, 204, 0.08); }
+    .nav-link { color: #d1d5db; transition: color 180ms ease; }
+    .nav-link:hover, .nav-link:focus-visible { color: #a8bfcc; }
+    .header-cta { background: #e9eef1; color: #111316; }
+    .header-cta:hover { background: #a8bfcc; }
+    .course-tab-btn { border-radius: 9999px; border-color: #41464c; background: transparent; color: #c8cbd0; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease; }
+    .course-tab-btn:hover:not(.active) { border-color: #9ba7af; color: #fff; }
+    .course-tab-btn.active { border-color: #e9eef1; background: #e9eef1; color: #111316; }
+    .course-card { width: 100%; min-width: 0; border-width: 1px; border-radius: 0.5rem; background: #101215; }
+    .course-card:hover { border-color: rgba(168, 191, 204, 0.65); background: #14171b; }
+    .course-cta { border: 1px solid #74818a; color: #e7ecef; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease; }
+    .course-cta:hover { border-color: #e9eef1; background: #e9eef1; color: #111316; }
+    .course-card button { border-radius: 9999px; border-color: #66747d; padding: 0.65rem 1rem; }
+    .course-card button:hover { border-color: #e9eef1; background: #e9eef1; color: #111316; }
+    .tool-card { transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease; }
+    .tool-card:hover { transform: translateY(-3px); border-color: #869aa7; background: #14171b; }
+    @media (max-width: 639px) {
+      .course-card button { width: 100%; }
+    }
+  </style>
+</head>
+<body class="bg-darkBg text-typeWhite antialiased selection:bg-acid selection:text-black">
+
+  <!-- ========================================== -->
+  <!-- 1. INTERACTIVE RIPPED ENTRANCE OVERLAY -->
+  <!-- ========================================== -->
+  <div id="entrance-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black overflow-hidden select-none">
+    
+    <!-- Acid Layer Behind Tear -->
+    <div class="absolute inset-0 bg-acid flex flex-col items-center justify-center p-6 text-black text-center z-0">
+      <p class="font-code text-xl md:text-3xl font-bold uppercase tracking-widest animate-pulse">
+        [ TIZIMGA KIRISH RUXSATI // HACKWAY'GA XUSH KELIBSIZ ]
+      </p>
+      <span class="mt-4 font-heavy text-4xl md:text-7xl">MAHORATNI EGALLANG. KELAJAKNI HIMOYA QILING.</span>
+    </div>
+
+    <!-- Left Curtain / Half Poster -->
+    <div id="curtain-left" class="curtain-left absolute inset-y-0 left-0 w-1/2 bg-black border-r-2 border-acid/50 z-10 flex items-center justify-end pr-0 md:pr-4 overflow-hidden bg-noise">
+      <div class="text-right whitespace-nowrap">
+        <h1 class="font-heavy text-7xl sm:text-9xl md:text-[14rem] leading-none text-white tracking-tighter transform -translate-x-2">
+          HACK
+        </h1>
+      </div>
+      <!-- Diagonal Torn Paper Tear Graphic -->
+      <div class="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-acid transform translate-x-1/2 rotate-3 tear-stripe"></div>
+    </div>
+
+    <!-- Right Curtain / Half Poster -->
+    <div id="curtain-right" class="curtain-right absolute inset-y-0 right-0 w-1/2 bg-black border-l-2 border-acid/50 z-10 flex items-center justify-start pl-0 md:pl-4 overflow-hidden bg-noise">
+      <div class="text-left whitespace-nowrap">
+        <h1 class="font-heavy text-7xl sm:text-9xl md:text-[14rem] leading-none text-white tracking-tighter transform translate-x-2">
+          WAY
+        </h1>
+      </div>
+    </div>
+
+    <!-- Interactive Rip Button Center Piece -->
+    <div id="rip-trigger-container" class="absolute z-20 flex flex-col items-center text-center p-4">
+      <div class="mb-4 bg-acid text-black font-code font-bold text-xs uppercase px-3 py-1 rounded-sm rotate-[-2deg] shadow-lg">
+        Interaktiv kirish oynasi
+      </div>
+      <button id="rip-btn" class="group relative px-8 py-5 bg-acid text-black font-heavy text-2xl md:text-4xl tracking-wider rounded-none uppercase shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-white active:scale-95 border-2 border-black">
+        <span class="relative z-10 flex items-center gap-3">
+          <svg class="w-8 h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+          KIRISHNI OCHISH
+        </span>
+        <div class="absolute -inset-1 bg-white blur-md opacity-30 group-hover:opacity-100 transition duration-300"></div>
+      </button>
+      <p class="mt-4 font-code text-xs text-gray-400 bg-black/80 px-4 py-1 border border-gray-800">
+        [ Ochish uchun tugmani bosing yoki pastga aylantiring ]
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- MAIN SITE CONTENT (Hidden until unlocked) -->
+  <!-- ========================================== -->
+  <div id="main-content" class="min-h-screen bg-darkBg opacity-10 transition-opacity duration-700">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#top" class="flex items-center gap-3 group" aria-label="Hackway akademiyasi — bosh sahifa">
+          <img src="assets/hackway-logo.png" alt="Hackway" class="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-[1.03]" onerror="this.onerror=null;this.src='../Hackway/public/logo/hackway-logo.png'">
+          <span class="hidden border-l border-gray-700 pl-3 font-code text-[0.6rem] leading-relaxed tracking-[0.14em] text-gray-400 sm:block">KIBERXAVFSIZLIK<br>AKADEMIYASI</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center gap-5 lg:gap-7 font-code text-xs lg:text-sm uppercase">
+          <a href="#courses" class="nav-link">Kurslar</a>
+          <a href="#learning-path" class="nav-link">O‘quv yo‘li</a>
+          <a href="#why-us" class="nav-link">Afzalliklar</a>
+          <a href="#tools" class="nav-link">Vositalar</a>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="flex items-center gap-4">
+          <button onclick="openEnrollModal('Umumiy ro‘yxatdan o‘tish')" class="header-cta inline-flex items-center gap-2 rounded-full px-5 py-3 font-heavy text-sm uppercase tracking-wide transition-colors">
+            Kursni boshlash <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- ========================================== -->
+    <!-- 2. HERO SECTION -->
+    <!-- ========================================== -->
+    <section id="top" class="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden border-b border-gray-800 bg-noise">
+      <!-- Background Ambient Glow -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-acid/10 blur-[120px] pointer-events-none rounded-full"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Hero Text -->
+          <div class="lg:col-span-10 space-y-6">
+            <h1 class="font-heavy text-5xl sm:text-7xl lg:text-8xl leading-none uppercase tracking-tight text-white">
+              Xavfsizlikni o‘rganing. <br>
+              <span class="text-acid underline decoration-4 underline-offset-8">Kelajakni yarating.</span>
+            </h1>
+
+            <p class="font-sans text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed">
+              Onlayn o‘qing, amaliy ko‘nikmalarni egallang. Har bir kurs — 6 oy.
+            </p>
+
+            <div class="flex flex-wrap gap-x-8 gap-y-3 pt-6 border-t border-gray-800 font-code text-xs uppercase tracking-wider text-gray-300">
+              <span><span class="text-acid">01</span> Onlayn</span>
+              <span><span class="text-acid">02</span> 6 oy</span>
+              <span><span class="text-acid">03</span> Erkin jadval</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 3. INTERACTIVE COURSE SHOWCASE -->
+    <!-- ========================================== -->
+    <section id="courses" class="border-b border-gray-800 bg-paperBg py-14 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-10 grid gap-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+          <div class="max-w-3xl">
+            <div class="text-acid font-code text-xs uppercase font-bold tracking-[0.16em]">TA’LIM YO‘NALISHLARI</div>
+            <h2 class="mt-2 font-heavy text-3xl text-white uppercase sm:text-4xl lg:text-5xl">O‘z yo‘lingizni tanlang</h2>
+            <p class="mt-3 text-sm text-gray-400">Onlayn · 6 oy · amaliy mashg‘ulotlar</p>
+          </div>
+          
+          <!-- Category Filter Tabs -->
+          <div class="grid grid-cols-2 gap-2 font-code text-xs sm:flex sm:flex-wrap" role="group" aria-label="Kurslarni darajasi bo‘yicha saralash">
+            <button type="button" aria-pressed="true" onclick="filterCourses('all', this)" class="course-tab-btn active px-3 py-2.5 font-bold uppercase sm:px-4">Barchasi</button>
+            <button type="button" aria-pressed="false" onclick="filterCourses('beginner', this)" class="course-tab-btn px-3 py-2.5 font-bold uppercase sm:px-4">Boshlang‘ich</button>
+            <button type="button" aria-pressed="false" onclick="filterCourses('intermediate', this)" class="course-tab-btn px-3 py-2.5 font-bold uppercase sm:px-4">O‘rta</button>
+            <button type="button" aria-pressed="false" onclick="filterCourses('advanced', this)" class="course-tab-btn px-3 py-2.5 font-bold uppercase sm:px-4">Yuqori</button>
+          </div>
+        </div>
+
+        <!-- Course Cards Grid -->
+        <div class="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 xl:gap-5" id="course-grid">
+          
+          <!-- Course Card 1 -->
+          <div class="course-card beginner bg-black border border-gray-800 transition-all duration-300 p-4 sm:p-5 md:p-6 flex flex-col justify-between relative group">
+            <div class="mb-4 inline-flex self-start rounded-full border border-gray-700 px-3 py-1 font-code text-[0.65rem] text-gray-300 uppercase">
+              Boshlovchilar uchun
+            </div>
+            <div>
+              <div class="font-code text-xs text-gray-500 mb-2">KURS // HW-101</div>
+              <h3 class="font-heavy text-2xl sm:text-3xl text-white uppercase group-hover:text-acid transition-colors">
+                Axloqiy xakerlik 101: ilk qadam
+              </h3>
+              <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                Veb zaifliklarini aniqlang va ilovalarni himoyalang.
+              </p>
+              
+              <!-- Syllabus Highlights -->
+              <div class="mt-6 pt-4 border-t border-gray-800 font-code text-xs text-gray-300 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Veb zaifliklari asoslari
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Linux buyruqlar satri
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Brauzer xavfsizligi mashqlari
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-col items-stretch gap-4 border-t border-gray-800 pt-4 sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <span class="font-code text-xs text-gray-400 block">ONLAYN · DAVOMIYLIGI</span>
+                <span class="font-heavy text-lg text-white">6 OY</span>
+              </div>
+              <button onclick="openEnrollModal('Axloqiy xakerlik 101')" class="rounded-sm border border-acid px-5 py-3 bg-transparent text-acid font-heavy text-sm uppercase tracking-wider transition-colors hover:bg-acid hover:text-black">
+                Kursga yozilish
+              </button>
+            </div>
+          </div>
+
+          <!-- Course Card 2 -->
+          <div class="course-card intermediate bg-black border border-gray-800 transition-all duration-300 p-4 sm:p-5 md:p-6 flex flex-col justify-between relative group">
+            <div class="mb-4 inline-flex self-start rounded-full border border-gray-700 px-3 py-1 font-code text-[0.65rem] text-gray-300 uppercase">
+              O‘rta daraja
+            </div>
+            <div>
+              <div class="font-code text-xs text-gray-500 mb-2">KURS // HW-204</div>
+              <h3 class="font-heavy text-2xl sm:text-3xl text-white uppercase group-hover:text-acid transition-colors">
+                Tarmoqlar va trafik tahlili
+              </h3>
+              <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                Tarmoq trafigini tahlil qiling va himoya choralarini qo‘llang.
+              </p>
+              
+              <div class="mt-6 pt-4 border-t border-gray-800 font-code text-xs text-gray-300 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Wireshark va paketlar tahlili
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Wi-Fi xavfsizligi va shifrlash
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Nmap orqali portlarni tekshirish
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-col items-stretch gap-4 border-t border-gray-800 pt-4 sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <span class="font-code text-xs text-gray-400 block">ONLAYN · DAVOMIYLIGI</span>
+                <span class="font-heavy text-lg text-white">6 OY</span>
+              </div>
+              <button onclick="openEnrollModal('Tarmoqlar va trafik tahlili')" class="rounded-sm border border-acid px-5 py-3 bg-transparent text-acid font-heavy text-sm uppercase tracking-wider transition-colors hover:bg-acid hover:text-black">
+                Kursga yozilish
+              </button>
+            </div>
+          </div>
+
+          <!-- Course Card 3 -->
+          <div class="course-card advanced bg-black border border-gray-800 transition-all duration-300 p-4 sm:p-5 md:p-6 flex flex-col justify-between relative group">
+            <div class="mb-4 inline-flex self-start rounded-full border border-gray-700 px-3 py-1 font-code text-[0.65rem] text-gray-300 uppercase">
+              Yuqori daraja
+            </div>
+            <div>
+              <div class="font-code text-xs text-gray-500 mb-2">KURS // HW-309</div>
+              <h3 class="font-heavy text-2xl sm:text-3xl text-white uppercase group-hover:text-acid transition-colors">
+                Raqamli tizimlar himoyasi
+              </h3>
+              <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                Hodisalarni tahlil qiling, zararli dasturlarni o‘rganing va serverlarni himoyalang.
+              </p>
+              
+              <div class="mt-6 pt-4 border-t border-gray-800 font-code text-xs text-gray-300 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Zararli dasturlarni xavfsiz tahlil qilish
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Raqamli kriminalistika va jurnal tahlili
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> SIEM tizimlari va tahdidlarni aniqlash
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-col items-stretch gap-4 border-t border-gray-800 pt-4 sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <span class="font-code text-xs text-gray-400 block">ONLAYN · DAVOMIYLIGI</span>
+                <span class="font-heavy text-lg text-white">6 OY</span>
+              </div>
+              <button onclick="openEnrollModal('Raqamli tizimlar himoyasi')" class="rounded-sm border border-acid px-5 py-3 bg-transparent text-acid font-heavy text-sm uppercase tracking-wider transition-colors hover:bg-acid hover:text-black">
+                Kursga yozilish
+              </button>
+            </div>
+          </div>
+
+          <!-- Course Card 4 -->
+          <div class="course-card beginner intermediate bg-black border border-gray-800 transition-all duration-300 p-4 sm:p-5 md:p-6 flex flex-col justify-between relative group">
+            <div class="mb-4 inline-flex self-start rounded-full border border-gray-700 px-3 py-1 font-code text-[0.65rem] text-gray-300 uppercase">
+              Barcha darajalar
+            </div>
+            <div>
+              <div class="font-code text-xs text-gray-500 mb-2">KURS // HW-105</div>
+              <h3 class="font-heavy text-2xl sm:text-3xl text-white uppercase group-hover:text-acid transition-colors">
+                Xakerlar uchun Python va avtomatlashtirish
+              </h3>
+              <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                Python’da xavfsizlik vazifalarini avtomatlashtiring.
+              </p>
+              
+              <div class="mt-6 pt-4 border-t border-gray-800 font-code text-xs text-gray-300 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Port tekshiruvchi vosita yaratish
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> Avtomatlashtirilgan tahlil skriptlari
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-acid">&#10004;</span> API bilan ishlash vositalari
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-col items-stretch gap-4 border-t border-gray-800 pt-4 sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <span class="font-code text-xs text-gray-400 block">ONLAYN · DAVOMIYLIGI</span>
+                <span class="font-heavy text-lg text-white">6 OY</span>
+              </div>
+              <button onclick="openEnrollModal('Xakerlar uchun Python')" class="rounded-sm border border-acid px-5 py-3 bg-transparent text-acid font-heavy text-sm uppercase tracking-wider transition-colors hover:bg-acid hover:text-black">
+                Kursga yozilish
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-8 grid gap-4 border-t border-gray-800 pt-7 md:grid-cols-[1fr_1fr_auto] md:items-center">
+          <div>
+            <p class="font-code text-xs uppercase tracking-wider text-gray-400">Kurs yakunida</p>
+            <p class="mt-1 font-semibold text-white">Muvaffaqiyatli yakunda — Hackway sertifikati</p>
+          </div>
+          <div>
+            <p class="font-code text-xs uppercase tracking-wider text-gray-400">Kurs davomida</p>
+            <p class="mt-1 font-semibold text-white">Xalqaro sertifikat imtihonlariga tayyorlanish mumkin</p>
+          </div>
+          <button type="button" onclick="openEnrollModal('Umumiy ro‘yxatdan o‘tish')" class="course-cta inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-heavy text-sm uppercase">Kursni tanlash <span aria-hidden="true">→</span></button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="learning-path" class="py-20 border-b border-gray-800 bg-noise">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-12">
+          <div class="text-acid font-code text-sm uppercase tracking-widest">// Aniq va tushunarli yo‘l</div>
+          <h2 class="font-heavy text-4xl sm:text-6xl text-white uppercase mt-2">Olti oy. Amaliy ko‘nikmalar.</h2>
+          <p class="mt-4 text-sm leading-relaxed text-gray-400">Onlayn o‘qing va bosqichma-bosqich rivojlaning.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-px border border-gray-800 bg-gray-800 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="bg-black p-6 sm:p-7"><span class="font-code text-xs text-acid">1-OY</span><h3 class="mt-4 font-heavy text-xl text-white">Asoslar</h3><p class="mt-2 text-sm leading-relaxed text-gray-400">Kompyuter va tarmoq asoslari.</p></article>
+          <article class="bg-black p-6 sm:p-7"><span class="font-code text-xs text-acid">2–3-OYLAR</span><h3 class="mt-4 font-heavy text-xl text-white">Xavfsizlik</h3><p class="mt-2 text-sm leading-relaxed text-gray-400">Zaifliklar va himoya usullari.</p></article>
+          <article class="bg-black p-6 sm:p-7"><span class="font-code text-xs text-acid">4–5-OYLAR</span><h3 class="mt-4 font-heavy text-xl text-white">Ixtisoslashuv</h3><p class="mt-2 text-sm leading-relaxed text-gray-400">Tanlagan yo‘nalishingiz bo‘yicha amaliyot.</p></article>
+          <article class="bg-black p-6 sm:p-7"><span class="font-code text-xs text-acid">6-OY</span><h3 class="mt-4 font-heavy text-xl text-white">Yakuniy loyiha</h3><p class="mt-2 text-sm leading-relaxed text-gray-400">Bilimingizni loyiha bilan namoyish eting.</p></article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 5. WHY HACKWAY? FEATURE GRID -->
+    <!-- ========================================== -->
+    <section id="why-us" class="py-20 border-b border-gray-800 bg-darkBg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mx-auto mb-12 max-w-3xl text-center sm:mb-14">
+          <div class="font-code text-xs uppercase tracking-[0.16em] text-[#a9c1cb]">Hackway afzalliklari</div>
+          <h2 class="mt-2 font-heavy text-4xl uppercase text-white sm:text-5xl">Kiberxavfsizlik — sodda va tushunarli</h2>
+          <p class="mt-3 text-sm text-gray-400 md:text-base">Amaliy darslar. Aniq reja. Mas’uliyatli ta’lim.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="group border-t border-gray-800 pt-5 transition-colors hover:border-[#a9c1cb] sm:pt-6">
+            <div class="mb-5 flex items-center gap-3"><span class="font-heavy text-3xl text-[#a9c1cb]">01</span><span class="h-px w-8 bg-gray-700 transition-colors group-hover:bg-[#a9c1cb]"></span></div>
+            <h3 class="font-heavy text-lg uppercase text-white transition-colors group-hover:text-[#a9c1cb]">Amaliy o‘rganing</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-400">Xavfsiz muhitda mashq qiling.</p>
+          </article>
+          <article class="group border-t border-gray-800 pt-5 transition-colors hover:border-[#a9c1cb] sm:pt-6">
+            <div class="mb-5 flex items-center gap-3"><span class="font-heavy text-3xl text-[#a9c1cb]">02</span><span class="h-px w-8 bg-gray-700 transition-colors group-hover:bg-[#a9c1cb]"></span></div>
+            <h3 class="font-heavy text-lg uppercase text-white transition-colors group-hover:text-[#a9c1cb]">Aniq o‘quv yo‘li</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-400">Olti oylik aniq reja asosida o‘qing.</p>
+          </article>
+          <article class="group border-t border-gray-800 pt-5 transition-colors hover:border-[#a9c1cb] sm:pt-6">
+            <div class="mb-5 flex items-center gap-3"><span class="font-heavy text-3xl text-[#a9c1cb]">03</span><span class="h-px w-8 bg-gray-700 transition-colors group-hover:bg-[#a9c1cb]"></span></div>
+            <h3 class="font-heavy text-lg uppercase text-white transition-colors group-hover:text-[#a9c1cb]">O‘z sur’atingizda</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-400">Istalgan joyda, qulay vaqtda o‘qing.</p>
+          </article>
+          <article class="group border-t border-gray-800 pt-5 transition-colors hover:border-[#a9c1cb] sm:pt-6">
+            <div class="mb-5 flex items-center gap-3"><span class="font-heavy text-3xl text-[#a9c1cb]">04</span><span class="h-px w-8 bg-gray-700 transition-colors group-hover:bg-[#a9c1cb]"></span></div>
+            <h3 class="font-heavy text-lg uppercase text-white transition-colors group-hover:text-[#a9c1cb]">Mas’uliyatli yondashuv</h3>
+            <p class="mt-2 text-sm leading-relaxed text-gray-400">Bilimingizdan mas’uliyat bilan foydalaning.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="tools" aria-labelledby="tools-heading" class="border-b border-gray-800 bg-paperBg py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="font-code text-xs uppercase tracking-[0.16em] text-gray-400">Amaliy laboratoriyalar</p>
+            <h2 id="tools-heading" class="mt-2 font-heavy text-3xl uppercase text-white sm:text-4xl">Biz ishlatadigan vositalar</h2>
+          </div>
+          <p class="max-w-md text-sm leading-relaxed text-gray-400">Har bir vosita xavfsiz, ruxsat etilgan laboratoriya muhitida o‘rganiladi.</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          <a class="tool-card rounded-lg border border-gray-800 bg-black p-4" href="https://nmap.org/book/man.html" target="_blank" rel="noopener noreferrer">
+            <div class="flex h-12 items-center"><img src="https://nmap.org/images/nmap-logo-64px.svg" alt="Nmap logotipi" width="48" height="48" loading="lazy" class="h-11 w-11 object-contain" onerror="this.hidden=true;this.nextElementSibling.classList.remove('hidden')"><span class="tool-fallback hidden font-heavy text-xl text-white" aria-hidden="true">N</span></div>
+            <h3 class="mt-4 font-heavy text-lg text-white">Nmap</h3>
+            <p class="mt-1 text-xs leading-relaxed text-gray-400">Tarmoqni tekshirish</p>
+          </a>
+          <a class="tool-card rounded-lg border border-gray-800 bg-black p-4" href="https://docs.metasploit.com/" target="_blank" rel="noopener noreferrer">
+            <div class="flex h-12 items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/metasploit.svg" alt="Metasploit logotipi" width="40" height="40" loading="lazy" class="h-10 w-10 object-contain brightness-0 invert" onerror="this.hidden=true;this.nextElementSibling.classList.remove('hidden')"><span class="tool-fallback hidden font-heavy text-xl text-white" aria-hidden="true">M</span></div>
+            <h3 class="mt-4 font-heavy text-lg text-white">Metasploit</h3>
+            <p class="mt-1 text-xs leading-relaxed text-gray-400">msfconsole · pentest</p>
+          </a>
+          <a class="tool-card rounded-lg border border-gray-800 bg-black p-4" href="https://www.wireshark.org/docs/" target="_blank" rel="noopener noreferrer">
+            <div class="flex h-12 items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/wireshark.svg" alt="Wireshark logotipi" width="40" height="40" loading="lazy" class="h-10 w-10 object-contain brightness-0 invert" onerror="this.hidden=true;this.nextElementSibling.classList.remove('hidden')"><span class="tool-fallback hidden font-heavy text-xl text-white" aria-hidden="true">W</span></div>
+            <h3 class="mt-4 font-heavy text-lg text-white">Wireshark</h3>
+            <p class="mt-1 text-xs leading-relaxed text-gray-400">Trafik tahlili</p>
+          </a>
+          <a class="tool-card rounded-lg border border-gray-800 bg-black p-4" href="https://portswigger.net/burp/documentation" target="_blank" rel="noopener noreferrer">
+            <div class="flex h-12 items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/burpsuite.svg" alt="Burp Suite logotipi" width="40" height="40" loading="lazy" class="h-10 w-10 object-contain brightness-0 invert" onerror="this.hidden=true;this.nextElementSibling.classList.remove('hidden')"><span class="tool-fallback hidden font-heavy text-xl text-white" aria-hidden="true">B</span></div>
+            <h3 class="mt-4 font-heavy text-lg text-white">Burp Suite</h3>
+            <p class="mt-1 text-xs leading-relaxed text-gray-400">Veb ilova sinovi</p>
+          </a>
+          <a class="tool-card rounded-lg border border-gray-800 bg-black p-4" href="https://www.kali.org/docs/" target="_blank" rel="noopener noreferrer">
+            <div class="flex h-12 items-center"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/kalilinux.svg" alt="Kali Linux logotipi" width="40" height="40" loading="lazy" class="h-10 w-10 object-contain brightness-0 invert" onerror="this.hidden=true;this.nextElementSibling.classList.remove('hidden')"><span class="tool-fallback hidden font-heavy text-xl text-white" aria-hidden="true">K</span></div>
+            <h3 class="mt-4 font-heavy text-lg text-white">Kali Linux</h3>
+            <p class="mt-1 text-xs leading-relaxed text-gray-400">Xavfsizlik muhiti</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 7. COMMON QUESTIONS -->
+    <!-- ========================================== -->
+    <section id="questions" aria-labelledby="questions-heading" class="border-b border-gray-800 bg-darkBg py-16 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="font-code text-xs uppercase tracking-[0.16em] text-gray-400">Qisqa va aniq</p>
+          <h2 id="questions-heading" class="mt-3 font-heavy text-4xl uppercase text-white sm:text-5xl">Ko‘p so‘raladi</h2>
+        </div>
+        <div class="mt-8 divide-y divide-gray-800 border-y border-gray-800">
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-white">Kurslar qanday o‘tiladi?<span class="text-xl text-gray-400 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-gray-400">Barcha darslar onlayn. Mashqlar xavfsiz, ruxsat etilgan o‘quv muhitida bajariladi.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-white">Kurs qancha davom etadi?<span class="text-xl text-gray-400 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-gray-400">Har bir yo‘nalish 6 oy davom etadi. O‘quv rejasi tanlangan kursga qarab farq qiladi.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-white">Kurs yakunida sertifikat beriladimi?<span class="text-xl text-gray-400 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-gray-400">Kursni muvaffaqiyatli tugatgan o‘quvchilarga Hackway sertifikati beriladi. Xalqaro sertifikat imtihonlariga tayyorlanish ham mumkin; imtihon va sertifikat talablari ularni beruvchi tashkilotga tegishli.</p>
+          </details>
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-white">Qayerdan o‘qishim mumkin?<span class="text-xl text-gray-400 transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-gray-400">Internetga ulangan kompyuterdan istalgan joyda qatnashishingiz mumkin. Kurslarning oflayn manzili yo‘q.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 8. FOOTER -->
+    <!-- ========================================== -->
+    <footer class="bg-black border-t border-gray-800 py-16 text-gray-400 font-sans">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-12 flex flex-col gap-6 border-y border-gray-800 py-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="font-code text-xs uppercase tracking-[0.16em] text-gray-400">Keyingi qadam</p>
+            <h3 class="mt-2 font-heavy text-3xl uppercase text-white sm:text-4xl">Yo‘nalishni tanlang</h3>
+            <p class="mt-2 text-sm text-gray-400">6 oylik, 100% onlayn kiberxavfsizlik kurslari.</p>
+          </div>
+          <a href="#courses" class="inline-flex min-h-12 items-center justify-center gap-2 border border-gray-600 px-6 py-3 font-semibold text-white transition-colors hover:border-white hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">Kurslarni ko‘rish <span aria-hidden="true">→</span></a>
+        </div>
+
+        <!-- Footer Bottom Links -->
+        <div class="grid grid-cols-1 gap-8 pb-12 text-sm md:grid-cols-3">
+          <div class="space-y-4">
+            <img src="assets/hackway-logo.png" alt="Hackway akademiyasi" class="h-10 w-auto" onerror="this.onerror=null;this.src='../Hackway/public/logo/hackway-logo.png'">
+            <p class="text-xs text-gray-400">
+              Axloqiy xakerlar, xavfsizlik tahlilchilari va raqamli himoyachilarning yangi avlodini tayyorlaymiz.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-code text-xs text-white uppercase font-bold mb-4">// SAHIFALAR</h4>
+            <ul class="space-y-2 font-code text-xs">
+              <li><a href="#courses" class="hover:text-acid">Kurslar</a></li>
+              <li><a href="#learning-path" class="hover:text-acid">O‘quv yo‘li</a></li>
+              <li><a href="#why-us" class="hover:text-acid">Nega Hackway?</a></li>
+              <li><a href="#tools" class="hover:text-acid">Vositalar</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-code text-xs text-white uppercase font-bold mb-4">Ta’lim haqida</h4>
+            <ul class="space-y-2 font-code text-xs">
+              <li>100% onlayn</li>
+              <li>Har bir kurs — 6 oy</li>
+              <li>Oflayn darslar mavjud emas</li>
+              <li><a href="#questions" class="transition-colors hover:text-white">Savol-javob</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid gap-8 border-b border-gray-800 py-10 md:grid-cols-2 md:gap-12">
+          <div>
+            <p class="font-code text-xs uppercase tracking-[0.16em] text-gray-400">Ta’lim formati</p>
+            <h3 class="mt-3 font-heavy text-3xl uppercase text-white sm:text-4xl">100% onlayn</h3>
+            <p class="mt-2 max-w-md text-sm leading-relaxed text-gray-400">Barcha kurslar masofaviy. Har bir kurs — 6 oy.</p>
+          </div>
+          <div>
+            <p class="font-code text-xs uppercase tracking-[0.16em] text-gray-400">Qayerdan o‘qish mumkin?</p>
+            <h3 class="mt-3 font-heavy text-3xl uppercase text-white sm:text-4xl">Istalgan joydan</h3>
+            <p class="mt-2 max-w-md text-sm leading-relaxed text-gray-400">Internet va kompyuter bo‘lsa kifoya.</p>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between font-code text-xs text-gray-500">
+          <p>&copy; 2026 HACKWAY ACADEMY. Barcha huquqlar himoyalangan.</p>
+          <p class="mt-2 sm:mt-0">Barcha yoshdagilar uchun</p>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- MODAL: KURSGA YOZILISH -->
+  <!-- ========================================== -->
+  <div id="enroll-modal" role="dialog" aria-modal="true" aria-labelledby="modal-course-title" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm hidden p-4">
+    <div class="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-lg border border-gray-700 bg-[#111315] p-6 shadow-2xl sm:p-8">
+      <button type="button" onclick="closeEnrollModal()" aria-label="Oynani yopish" class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full border border-gray-700 text-xl text-gray-400 transition-colors hover:border-gray-500 hover:text-white">
+        &times;
+      </button>
+
+      <div class="font-code text-xs font-bold uppercase tracking-wider text-[#a9c1cb]">Ro‘yxatdan o‘tish</div>
+      <h3 class="mt-2 pr-10 font-heavy text-2xl uppercase text-white sm:text-3xl" id="modal-course-title">Kursga yozilish</h3>
+      <p class="mt-2 text-sm leading-relaxed text-gray-400">Siz bilan bog‘lanishimiz uchun ma’lumot qoldiring.</p>
+
+      <form id="enroll-form" onsubmit="handleEnrollSubmit(event)" class="mt-6 space-y-4 font-code text-xs">
+        <div>
+          <label class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-300">O‘quvchining ismi</label>
+          <input name="studentName" type="text" autocomplete="name" required class="w-full rounded-md border border-gray-700 bg-[#191b1e] p-3 text-sm text-white outline-none transition-colors focus:border-[#a9c1cb]">
+        </div>
+
+        <div>
+          <label for="enroll-phone" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-300">O‘zbekiston telefon raqami</label>
+          <div class="flex rounded-md">
+            <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-700 bg-[#191b1e] px-4 text-sm text-[#a9c1cb]" aria-hidden="true">+998</span>
+            <input id="enroll-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="90 123 45 67" pattern="[0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}" maxlength="12" aria-describedby="enroll-phone-hint" required class="min-w-0 w-full rounded-r-md border border-gray-700 bg-[#191b1e] p-3 text-sm text-white outline-none transition-colors focus:border-[#a9c1cb]">
+          </div>
+          <p id="enroll-phone-hint" class="mt-1.5 text-xs text-gray-500">Masalan: 90 123 45 67</p>
+        </div>
+
+        <div>
+          <label for="enroll-experience" class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-gray-300">Tajriba darajangiz</label>
+          <select id="enroll-experience" name="experience" class="w-full rounded-md border border-gray-700 bg-[#191b1e] p-3 text-sm text-white outline-none transition-colors focus:border-[#a9c1cb]">
+            <option>Boshlovchiman</option>
+            <option>Asosiy bilimga egaman</option>
+            <option>Tajribam bor</option>
+            <option>Aniq bilmayman — maslahat kerak</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full rounded-md border border-[#a9c1cb] bg-[#a9c1cb] py-3 text-base font-semibold uppercase tracking-wide text-[#101214] transition-colors hover:border-white hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a9c1cb]">
+          Ro‘yxatdan o‘tishni tasdiqlash
+        </button>
+        <p id="enroll-feedback" role="status" aria-live="polite" class="hidden text-sm leading-relaxed text-gray-300"></p>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT INTERACTION LOGIC -->
+  <!-- ========================================== -->
+  <script>
+    // 1. Rip Open / Entrance Tear Logic
+    let isRipped = false;
+    let entranceTransitioning = false;
+    let entranceTimer;
+    let suppressRipUntil = 0;
+    document.body.style.overflowY = 'hidden';
+    window.scrollTo(0, 0);
+
+    function ripOpen() {
+      if (isRipped) return;
+      isRipped = true;
+      entranceTransitioning = true;
+
+      const overlay = document.getElementById('entrance-overlay');
+      const mainContent = document.getElementById('main-content');
+
+      overlay.classList.add('ripped-open');
+      mainContent.classList.remove('opacity-10');
+      
+      // Remove overlay from pointer events after transition
+      entranceTimer = setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.style.overflowY = 'auto';
+        entranceTransitioning = false;
+      }, 800);
+    }
+
+    function restoreEntrance() {
+      if (!isRipped || window.scrollY > 1) return;
+      isRipped = false;
+      entranceTransitioning = true;
+      suppressRipUntil = Date.now() + 1000;
+      clearTimeout(entranceTimer);
+      document.body.style.overflowY = 'hidden';
+      window.scrollTo(0, 0);
+
+      const overlay = document.getElementById('entrance-overlay');
+      const mainContent = document.getElementById('main-content');
+
+      overlay.style.display = 'flex';
+      overlay.classList.add('ripped-open');
+      overlay.getBoundingClientRect();
+      requestAnimationFrame(() => {
+        overlay.classList.remove('ripped-open');
+        mainContent.classList.add('opacity-10');
+      });
+      entranceTimer = setTimeout(() => {
+        entranceTransitioning = false;
+      }, 800);
+    }
+
+    // Attach Rip Event Listeners
+    document.getElementById('rip-btn').addEventListener('click', ripOpen);
+
+    // Also trigger rip open on wheel scroll
+    window.addEventListener('wheel', function(e) {
+      if (entranceTransitioning) {
+        e.preventDefault();
+      } else if (!isRipped && e.deltaY > 20 && Date.now() > suppressRipUntil) {
+        e.preventDefault();
+        ripOpen();
+      } else if (isRipped && e.deltaY < -20 && window.scrollY <= 1) {
+        e.preventDefault();
+        restoreEntrance();
+      }
+    }, { passive: false });
+
+    let previousScrollY = window.scrollY;
+    window.addEventListener('scroll', function() {
+      const currentScrollY = window.scrollY;
+      if (isRipped && currentScrollY <= 1 && currentScrollY < previousScrollY) {
+        restoreEntrance();
+      }
+      previousScrollY = currentScrollY;
+    }, { passive: true });
+
+    // Touch swipe support for mobile devices
+    let touchStartY = 0;
+    window.addEventListener('touchstart', function(e) {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', function(e) {
+      if (!isRipped && touchStartY - e.changedTouches[0].clientY > 30 && Date.now() > suppressRipUntil) {
+        ripOpen();
+      } else if (isRipped && e.changedTouches[0].clientY - touchStartY > 30 && window.scrollY <= 1) {
+        restoreEntrance();
+      }
+    }, { passive: true });
+
+
+    // 2. Course Filter Logic
+    function filterCourses(category, selectedButton) {
+      const cards = document.querySelectorAll('.course-card');
+      const buttons = document.querySelectorAll('.course-tab-btn');
+
+      // Update active button styling
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+      selectedButton.classList.add('active');
+      selectedButton.setAttribute('aria-pressed', 'true');
+
+      // Filter cards
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+
+    // 3. Modal Window Logic
+    function openEnrollModal(courseName) {
+      document.getElementById('modal-course-title').innerText = courseName;
+      document.getElementById('enroll-modal').classList.remove('hidden');
+      document.querySelector('#enroll-form [name="studentName"]').focus();
+    }
+
+    function closeEnrollModal() {
+      document.getElementById('enroll-modal').classList.add('hidden');
+    }
+
+    async function handleEnrollSubmit(e) {
+      e.preventDefault();
+      const phoneDigits = document.getElementById('enroll-phone').value.replace(/\D/g, '');
+      if (phoneDigits.length !== 9) {
+        document.getElementById('enroll-phone').setCustomValidity('O‘zbekiston raqami 9 ta raqamdan iborat bo‘lishi kerak.');
+        document.getElementById('enroll-phone').reportValidity();
+        return;
+      }
+      const form = e.currentTarget;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const feedback = document.getElementById('enroll-feedback');
+      const formData = new FormData(form);
+      const localPreview = ['localhost', '127.0.0.1'].includes(window.location.hostname) && window.location.port === '8001';
+      const endpoint = window.location.protocol === 'file:' || localPreview
+        ? 'http://localhost:3000/api/applications'
+        : '/api/applications';
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'YUBORILMOQDA…';
+      feedback.classList.add('hidden');
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.get('studentName'),
+            phone: phoneDigits,
+            course: document.getElementById('modal-course-title').textContent.trim(),
+            experience: formData.get('experience'),
+          }),
+        });
+        const result = await response.json();
+        if (!response.ok || !result.ok) throw new Error(result.error || 'Ariza yuborilmadi.');
+
+        alert(result.notified
+          ? 'Arizangiz qabul qilindi. Telegram adminiga xabar yuborildi.'
+          : 'Arizangiz saqlandi, ammo Telegram xabari yuborilmadi. Bot sozlamalarini tekshiring.');
+        form.reset();
+        closeEnrollModal();
+      } catch (error) {
+        feedback.textContent = error instanceof Error
+          ? `${error.message} Sayt serveri ishlayotganini tekshiring.`
+          : 'Ariza yuborilmadi. Sayt serveri ishlayotganini tekshiring.';
+        feedback.classList.remove('hidden');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Ro‘yxatdan o‘tishni tasdiqlash';
+      }
+    }
+
+    document.getElementById('enroll-phone').addEventListener('input', (event) => {
+      const input = event.currentTarget;
+      const digits = input.value.replace(/\D/g, '').slice(0, 9);
+      const groups = [digits.slice(0, 2), digits.slice(2, 5), digits.slice(5, 7), digits.slice(7, 9)].filter(Boolean);
+      input.value = groups.join(' ');
+      input.setCustomValidity('');
+    });
+
+
+    // Reveal content as it enters view; revealed sections stay visible on scroll-up.
+    const revealTargets = document.querySelectorAll('#main-content section, #main-content footer, .course-card, #why-us .grid > div');
+    revealTargets.forEach((element) => element.classList.add('scroll-reveal'));
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealTargets.forEach((element) => revealObserver.observe(element));
+    } else {
+      revealTargets.forEach((element) => element.classList.add('is-visible'));
+    }
+  </script>
+
+</body>
+</html>

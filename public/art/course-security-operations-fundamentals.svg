@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Security Operations Fundamentals artwork">
+  
+  <defs>
+    <linearGradient id="bg-soc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C1320"/>
+      <stop offset="0.55" stop-color="#101827"/>
+      <stop offset="1" stop-color="#080D16"/>
+    </linearGradient>
+    <radialGradient id="glow-soc" cx="0.74" cy="0.18" r="0.7">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#38BDF8" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid-soc" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#22304A" stroke-opacity="0.32" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="stroke-soc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6595FF" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg-soc)"/>
+  <rect width="1280" height="720" fill="url(#grid-soc)"/>
+  <rect width="1280" height="720" fill="url(#glow-soc)"/>
+  
+  <g transform="translate(120 120)">
+    <rect x="0" y="0" width="640" height="420" rx="16" fill="#080D16" fill-opacity="0.45" stroke="#2C3C55" stroke-width="1.2"/>
+    <path d="M40 92h560" stroke="#2C3C55" stroke-width="1"/>
+    <path d="M40 172h560M40 252h560M40 332h560M40 412h560" stroke="#2C3C55" stroke-opacity="0.45" stroke-width="1" stroke-dasharray="4 8"/>
+    <path d="M40 300l70-26 60 14 74-64 66 22 62-58 70 34 62-20" fill="none" stroke="#38BDF8" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+    <g fill="#38BDF8">
+      <circle cx="110" cy="274" r="4.5"/>
+      <circle cx="244" cy="288" r="4.5"/>
+      <circle cx="390" cy="226" r="4.5"/>
+      <circle cx="522" cy="248" r="4.5"/>
+      <circle cx="654" cy="188" r="4.5"/>
+    </g>
+    <g transform="translate(40 34)">
+      <text x="0" y="0" fill="#6E7C92" font-size="13" letter-spacing="2.4" font-family="ui-monospace, monospace">EVENT STREAM</text>
+      <rect x="380" y="-18" width="120" height="24" rx="12" fill="#38BDF8" fill-opacity="0.16"/>
+      <text x="440" y="-1" text-anchor="middle" fill="#38BDF8" font-size="12" font-family="ui-monospace, monospace">ALERT 0412</text>
+    </g>
+  </g>
+  <g transform="translate(820 140)">
+    <rect x="0" y="0" width="300" height="150" rx="14" fill="#080D16" fill-opacity="0.5" stroke="#2C3C55" stroke-width="1.2"/>
+    <text x="26" y="42" fill="#6E7C92" font-size="12" letter-spacing="2.4" font-family="ui-monospace, monospace">TRIAGE QUEUE</text>
+    <text x="26" y="92" fill="#A6B2C3" font-size="32" font-family="ui-monospace, monospace">07</text>
+    <rect x="26" y="110" width="248" height="8" rx="4" fill="#2C3C55" fill-opacity="0.8"/>
+    <rect x="26" y="110" width="150" height="8" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
+  </g>
+  <g transform="translate(120 560)">
+    <rect x="160" y="460" width="22" height="40" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="206" y="428" width="22" height="72" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="252" y="446" width="22" height="54" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="298" y="404" width="22" height="96" rx="4" fill="#38BDF8" fill-opacity="0.65"/>
+  <rect x="344" y="436" width="22" height="64" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="390" y="382" width="22" height="118" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="436" y="414" width="22" height="86" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="482" y="360" width="22" height="140" rx="4" fill="#38BDF8" fill-opacity="0.65"/>
+  <rect x="528" y="396" width="22" height="104" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="574" y="342" width="22" height="158" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="620" y="378" width="22" height="122" rx="4" fill="#2C3C55" fill-opacity="0.75"/>
+  <rect x="666" y="324" width="22" height="176" rx="4" fill="#38BDF8" fill-opacity="0.65"/>
+    <circle cx="171" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="217" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="263" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="309" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="355" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="401" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="447" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="493" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="539" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="585" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="631" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  <circle cx="677" cy="500" r="2.6" fill="#6E7C92" fill-opacity="0.8"/>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif">
+    <g transform="translate(64 560)">
+      <path d="M0 0h22v22H0z" fill="none" stroke="#38BDF8" stroke-opacity="0.55" stroke-width="1.5"/>
+      <path d="M6 11l4 4 7-8" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="36" y="16" fill="#A6B2C3" font-size="17" letter-spacing="2.4" font-weight="600">HACKWAY</text>
+    </g>
+    <text x="1216" y="576" text-anchor="end" fill="#6E7C92" font-size="14" letter-spacing="3" font-family="ui-monospace, 'Cascadia Code', monospace">DEFENSIVE SECURITY</text>
+  </g>
+</svg>

@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --hw-bg: #0a0a0a;
+    --hw-paper: #121212;
+    --hw-grit: #1e1e1e;
+    --hw-border: #26262a;
+    --hw-acid: #ccff00;
+    --hw-text: #f5f5f7;
+    --hw-text-secondary: #a1a1aa;
+    --hw-text-muted: #6f6f76;
+  }
+
+  * {
+    border-color: var(--hw-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--hw-bg);
+    color: var(--hw-text);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--hw-acid);
+    color: #000000;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--hw-acid);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--hw-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--hw-acid);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--hw-acid-hover, #b3e600);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-container px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Poster panel: flat black card with a hard border and no blur. */
+  .surface-card {
+    @apply rounded-xl border border-line bg-surface shadow-card transition-all;
+  }
+
+  .surface-card-hover {
+    @apply transition-[transform,border-color,box-shadow] duration-200 ease-smooth hover:-translate-y-0.5 hover:border-acid/60 hover:shadow-hard-acid-sm;
+  }
+
+  /* Monospace kicker, e.g. "// CURRICULUM" */
+  .eyebrow {
+    @apply font-mono text-2xs font-semibold uppercase tracking-[0.2em] text-acid;
+  }
+
+  .heading-xl {
+    @apply font-display text-[2.4rem] font-black uppercase leading-[0.95] tracking-[-0.02em] text-white sm:text-[3.2rem] lg:text-[4rem];
+  }
+
+  .heading-lg {
+    @apply font-display text-[1.9rem] font-black uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[2.4rem] lg:text-[2.9rem];
+  }
+
+  .heading-md {
+    @apply font-display text-[1.5rem] font-black uppercase leading-[1.05] tracking-[-0.015em] text-white sm:text-[1.9rem];
+  }
+
+  .heading-sm {
+    @apply font-display text-[1.125rem] font-extrabold uppercase leading-tight tracking-[-0.01em] text-white sm:text-[1.25rem];
+  }
+
+  .body-lg {
+    @apply text-[1rem] leading-[1.7] text-ink-secondary sm:text-[1.0625rem];
+  }
+
+  .body-base {
+    @apply text-[0.9375rem] leading-[1.7] text-ink-secondary;
+  }
+
+  .meta-text {
+    @apply font-mono text-[0.8125rem] leading-[1.5] text-ink-muted;
+  }
+
+  .link-underline {
+    @apply underline-offset-4 transition-colors hover:text-acid hover:underline;
+  }
+
+  /* Acid sticker used for tags and corner labels. */
+  .acid-tag {
+    @apply inline-flex items-center gap-1.5 rounded-sm bg-acid px-2 py-0.5 font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-black;
+  }
+
+  /* Terminal chrome shared by the hero console and code panels. */
+  .terminal-panel {
+    @apply border border-line bg-black font-mono;
+  }
+}
+
+@layer utilities {
+  /* Grain overlay that gives the poster its printed texture. */
+  .bg-noise {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .bg-grain {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
+    background-size: 3px 3px;
+  }
+
+  /* Torn paper edges. */
+  .tear-mask {
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 85% 95%, 70% 89%, 50% 98%, 30% 91%, 12% 97%, 0 88%);
+  }
+
+  .tear-mask-top {
+    clip-path: polygon(0 12%, 15% 4%, 32% 11%, 50% 2%, 68% 10%, 85% 3%, 100% 12%, 100% 100%, 0 100%);
+  }
+
+  .tear-stripe {
+    clip-path: polygon(0 35%, 100% 10%, 100% 65%, 0 90%);
+  }
+
+  .glitch-hover:hover {
+    animation: glitch 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 12px rgba(204, 255, 0, 0.45);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes terminal-enter {
+  from { opacity: 0; transform: translate(20px, 12px); }
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+@keyframes scroll-cue {
+  0%, 100% { opacity: .55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(5px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy { animation: hero-enter .7s cubic-bezier(.2,.7,.2,1) both; }
+  .home-hero .terminal-panel { animation: terminal-enter .85s .12s cubic-bezier(.2,.7,.2,1) both; }
+  .scroll-cue { animation: scroll-cue 2s ease-in-out infinite; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

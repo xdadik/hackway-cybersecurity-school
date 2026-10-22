@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Introduction to Penetration Testing artwork">
+  
+  <defs>
+    <linearGradient id="bg-pen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C1320"/>
+      <stop offset="0.55" stop-color="#101827"/>
+      <stop offset="1" stop-color="#080D16"/>
+    </linearGradient>
+    <radialGradient id="glow-pen" cx="0.74" cy="0.18" r="0.7">
+      <stop offset="0" stop-color="#6595FF" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#6595FF" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#6595FF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid-pen" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#22304A" stroke-opacity="0.32" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="stroke-pen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6595FF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6595FF" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg-pen)"/>
+  <rect width="1280" height="720" fill="url(#grid-pen)"/>
+  <rect width="1280" height="720" fill="url(#glow-pen)"/>
+  
+  <g transform="translate(860 340)">
+    <circle r="250" fill="none" stroke="#2C3C55" stroke-opacity="0.55" stroke-width="1"/>
+    <circle r="196" fill="none" stroke="#6595FF" stroke-opacity="0.35" stroke-width="1.2" stroke-dasharray="14 12"/>
+    <circle r="132" fill="none" stroke="#6595FF" stroke-opacity="0.25" stroke-width="1.2"/>
+    <circle r="66" fill="#6595FF" fill-opacity="0.06" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.4"/>
+    <g stroke="#6E7C92" stroke-opacity="0.5" stroke-width="1">
+      <path d="M-290 0h580M0 -290v580"/>
+    </g>
+    <circle cx="132" cy="-132" r="7" fill="#38BDF8"/>
+    <circle cx="-160" cy="90" r="5" fill="#6595FF" fill-opacity="0.7"/>
+    <circle cx="60" cy="168" r="5" fill="#A78BFA" fill-opacity="0.6"/>
+    <path d="M132 -132L0 0" stroke="#38BDF8" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="5 7"/>
+  </g>
+  <g transform="translate(120 180)">
+    <rect x="0" y="0" width="380" height="46" rx="10" fill="#080D16" fill-opacity="0.6" stroke="#2C3C55" stroke-width="1.2"/>
+    <text x="24" y="29" fill="#6E7C92" font-size="13" letter-spacing="2.2" font-family="ui-monospace, monospace">SCOPE</text>
+    <rect x="120" y="14" width="236" height="18" rx="9" fill="#6595FF" fill-opacity="0.25"/>
+  </g>
+  <g transform="translate(120 268)">
+    <rect x="0" y="0" width="380" height="46" rx="10" fill="#080D16" fill-opacity="0.6" stroke="#2C3C55" stroke-width="1.2"/>
+    <text x="24" y="29" fill="#6E7C92" font-size="13" letter-spacing="2.2" font-family="ui-monospace, monospace">RULES OF ENGAGEMENT</text>
+    <rect x="230" y="14" width="126" height="18" rx="9" fill="#38BDF8" fill-opacity="0.22"/>
+  </g>
+  <g transform="translate(120 356)">
+    <rect x="0" y="0" width="380" height="46" rx="10" fill="#080D16" fill-opacity="0.6" stroke="#2C3C55" stroke-width="1.2"/>
+    <text x="24" y="29" fill="#6E7C92" font-size="13" letter-spacing="2.2" font-family="ui-monospace, monospace">EVIDENCE LOG</text>
+    <rect x="196" y="14" width="160" height="18" rx="9" fill="#A78BFA" fill-opacity="0.2"/>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif">
+    <g transform="translate(64 560)">
+      <path d="M0 0h22v22H0z" fill="none" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.5"/>
+      <path d="M6 11l4 4 7-8" fill="none" stroke="#6595FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="36" y="16" fill="#A6B2C3" font-size="17" letter-spacing="2.4" font-weight="600">HACKWAY</text>
+    </g>
+    <text x="1216" y="576" text-anchor="end" fill="#6E7C92" font-size="14" letter-spacing="3" font-family="ui-monospace, 'Cascadia Code', monospace">OFFENSIVE SECURITY</text>
+  </g>
+</svg>

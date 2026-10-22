@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Cybersecurity Fundamentals artwork">
+  
+  <defs>
+    <linearGradient id="bg-fund" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C1320"/>
+      <stop offset="0.55" stop-color="#101827"/>
+      <stop offset="1" stop-color="#080D16"/>
+    </linearGradient>
+    <radialGradient id="glow-fund" cx="0.74" cy="0.18" r="0.7">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#38BDF8" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid-fund" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#22304A" stroke-opacity="0.32" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="stroke-fund" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6595FF" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg-fund)"/>
+  <rect width="1280" height="720" fill="url(#grid-fund)"/>
+  <rect width="1280" height="720" fill="url(#glow-fund)"/>
+  
+  <g opacity="0.85"><path d="M140 144l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M232 144l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M324 144l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M416 144l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M186 224l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M278 224l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M370 224l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M462 224l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M140 304l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M232 304l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M324 304l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/><path d="M416 304l22 13v26l-22 13-22-13v-26z" fill="none" stroke="#2C3C55" stroke-opacity="0.75" stroke-width="1.2"/></g>
+  <circle cx="880" cy="330" r="120" fill="none" stroke="#38BDF8" stroke-opacity="0.40" stroke-width="1.4"/><circle cx="880" cy="330" r="182" fill="none" stroke="#38BDF8" stroke-opacity="0.34" stroke-width="1.4"/><circle cx="880" cy="330" r="244" fill="none" stroke="#38BDF8" stroke-opacity="0.28" stroke-width="1.4"/><circle cx="880" cy="330" r="306" fill="none" stroke="#38BDF8" stroke-opacity="0.22" stroke-width="1.4"/><circle cx="880" cy="330" r="368" fill="none" stroke="#38BDF8" stroke-opacity="0.16" stroke-width="1.4"/>
+  <g transform="translate(880 330)">
+    <path d="M0 -74l58 30v52c0 40-24 66-58 84-34-18-58-44-58-84v-52z" fill="#38BDF8" fill-opacity="0.07" stroke="url(#stroke-fund)" stroke-width="2"/>
+    <path d="M-24 8l16 18 34-42" fill="none" stroke="#38BDF8" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M120 470h380" stroke="#2C3C55" stroke-width="1"/>
+  <circle cx="120" cy="470" r="4" fill="#38BDF8" fill-opacity="0.8"/>
+  <circle cx="500" cy="470" r="4" fill="#6595FF" fill-opacity="0.5"/>
+  <g font-family="Inter, 'Segoe UI', sans-serif">
+    <g transform="translate(64 560)">
+      <path d="M0 0h22v22H0z" fill="none" stroke="#38BDF8" stroke-opacity="0.55" stroke-width="1.5"/>
+      <path d="M6 11l4 4 7-8" fill="none" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="36" y="16" fill="#A6B2C3" font-size="17" letter-spacing="2.4" font-weight="600">HACKWAY</text>
+    </g>
+    <text x="1216" y="576" text-anchor="end" fill="#6E7C92" font-size="14" letter-spacing="3" font-family="ui-monospace, 'Cascadia Code', monospace">FOUNDATIONS</text>
+  </g>
+</svg>

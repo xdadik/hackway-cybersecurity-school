@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Web Application Security artwork">
+  
+  <defs>
+    <linearGradient id="bg-web" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0C1320"/>
+      <stop offset="0.55" stop-color="#101827"/>
+      <stop offset="1" stop-color="#080D16"/>
+    </linearGradient>
+    <radialGradient id="glow-web" cx="0.74" cy="0.18" r="0.7">
+      <stop offset="0" stop-color="#6595FF" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#6595FF" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#6595FF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid-web" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#22304A" stroke-opacity="0.32" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="stroke-web" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6595FF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6595FF" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg-web)"/>
+  <rect width="1280" height="720" fill="url(#grid-web)"/>
+  <rect width="1280" height="720" fill="url(#glow-web)"/>
+  
+  <g transform="translate(120 150)">
+    <rect x="0" y="0" width="520" height="300" rx="16" fill="#080D16" fill-opacity="0.55" stroke="#2C3C55" stroke-width="1.2"/>
+    <path d="M0 44h520" stroke="#2C3C55" stroke-width="1.2"/>
+    <circle cx="30" cy="22" r="6" fill="#2C3C55"/>
+    <circle cx="52" cy="22" r="6" fill="#2C3C55"/>
+    <circle cx="74" cy="22" r="6" fill="#2C3C55"/>
+    <rect x="104" y="12" width="330" height="20" rx="10" fill="#0C1320" stroke="#2C3C55" stroke-width="1"/>
+    <text x="118" y="26" fill="#6E7C92" font-size="12" font-family="ui-monospace, monospace">https://app.example.org/login</text>
+    <g stroke="#2C3C55" stroke-width="1" fill="none">
+      <rect x="36" y="86" width="200" height="12" rx="6"/>
+      <rect x="36" y="118" width="320" height="12" rx="6" fill-opacity="0.5"/>
+      <rect x="36" y="150" width="260" height="12" rx="6" fill-opacity="0.35"/>
+      <rect x="36" y="196" width="120" height="40" rx="8" fill-opacity="0.6"/>
+    </g>
+    <text x="36" y="264" fill="#6E7C92" font-size="13" font-family="ui-monospace, monospace">POST /session</text>
+  </g>
+  <g transform="translate(700 150)">
+    <rect x="0" y="60" width="380" height="180" rx="16" fill="#080D16" fill-opacity="0.5" stroke="#2C3C55" stroke-width="1.2"/>
+    <g stroke="#2C3C55" stroke-width="1.2" fill="none">
+      <rect x="40" y="96" width="300" height="108" rx="10"/>
+      <path d="M40 128h300M40 168h300" stroke-opacity="0.6"/>
+    </g>
+    <text x="56" y="118" fill="#6E7C92" font-size="12" font-family="ui-monospace, monospace">server</text>
+    <g stroke="#6595FF" stroke-width="2" fill="none" stroke-linecap="round">
+      <path d="M540 210h120" stroke-dasharray="2 8"/>
+      <path d="M660 210l-14-9v18z" fill="#6595FF" stroke="none"/>
+      <path d="M660 300H540" stroke-dasharray="2 8"/>
+      <path d="M540 300l14-9v18z" fill="#6595FF" stroke="none"/>
+    </g>
+    <text x="556" y="196" fill="#6595FF" fill-opacity="0.85" font-size="12" letter-spacing="2" font-family="ui-monospace, monospace">REQUEST</text>
+    <text x="556" y="330" fill="#6595FF" fill-opacity="0.85" font-size="12" letter-spacing="2" font-family="ui-monospace, monospace">RESPONSE</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif">
+    <g transform="translate(64 560)">
+      <path d="M0 0h22v22H0z" fill="none" stroke="#6595FF" stroke-opacity="0.55" stroke-width="1.5"/>
+      <path d="M6 11l4 4 7-8" fill="none" stroke="#6595FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="36" y="16" fill="#A6B2C3" font-size="17" letter-spacing="2.4" font-weight="600">HACKWAY</text>
+    </g>
+    <text x="1216" y="576" text-anchor="end" fill="#6E7C92" font-size="14" letter-spacing="3" font-family="ui-monospace, 'Cascadia Code', monospace">APPLICATION SECURITY</text>
+  </g>
+</svg>
